@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    <h1>Création d'un nouvel emprunt - {{ livre.titre }}</h1>
+
+    <ul>
+        <li>
+            {{ form(form) }}
+        </li>
+    </ul>
+{% endblock %}

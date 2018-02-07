@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Votre Recherche :</h1>
+
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Nom Prénom</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in listeLecteurs %}
+            <tr>
+                <td><a href="{{ path('partieC_lecteur_show', { 'id': entity.id }) }}">{{ entity.nom }} {{ entity.prenom }}</a></td>
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('partieC_lecteur_show', { 'id': entity.id }) }}">Détails</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('partieC_lecteur_edit', { 'id': entity.id }) }}">Éditer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

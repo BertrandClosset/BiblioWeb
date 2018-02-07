@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Facultés</h1>
+
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('partieC_faculte_show', { 'id': entity.id }) }}">{{ entity.nom }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('partieC_faculte_show', { 'id': entity.id }) }}">Détails</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('partieC_faculte_new') }}">
+                Ajout d'un nouvelle Faculté
+            </a>
+        </li>
+    </ul>
+{% endblock %}

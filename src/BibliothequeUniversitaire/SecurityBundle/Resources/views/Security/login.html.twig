@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bibliothèque Universitaire</title>
+    </head>
+
+    <body>
+        <h1>Bienvenue sur l'application Bibliothèque Universitaire</h1>
+        <h2>Merci de vous connecter pour accéder à cette application</h2>
+        <h1>Login :</h1>
+
+        {% if error %}
+            <div>{{ error.message }}</div>
+        {% endif %}
+
+        <form action="{{ path('login_check') }}" method="post">
+            <label for="username">Login :</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            <label for="password">Password :</label>
+            <input type="password" id="password" name="_password" />
+            <button type="submit">Login</button>
+        </form>
+    </body>
+</html>

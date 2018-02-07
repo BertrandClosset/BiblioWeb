@@ -1,0 +1,29 @@
+bibliotheque_universitaire_security:
+    resource: "@BibliothequeUniversitaireSecurityBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bibliotheque_universitaire_partie_a:
+    resource: "@BibliothequeUniversitairePartieABundle/Resources/config/routing.yml"
+    prefix:   /partieA
+
+bibliotheque_universitaire_partie_b:
+    resource: "@BibliothequeUniversitairePartieBBundle/Resources/config/routing.yml"
+    prefix:   /partieB
+
+bibliotheque_universitaire_partie_c:
+    resource: "@BibliothequeUniversitairePartieCBundle/Resources/config/routing.yml"
+    prefix:   /partieC
+
+bibliotheque_universitaire_entite:
+    resource: "@BibliothequeUniversitaireEntiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    pattern:  /login
+    defaults: { _controller: "BibliothequeUniversitaireSecurityBundle:Security:login" }
+
+login_check:
+    pattern:  /login_check
+
+logout:
+    pattern:  /logout

@@ -1,0 +1,70 @@
+partieC_faculte_liste:
+    path:     /faculte
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Faculte:index" }
+
+partieC_faculte_show:
+    path:     /faculte/show/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Faculte:show" }
+
+partieC_faculte_delete:
+    path:     /faculte/delete/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Faculte:delete" }
+    methods:  [POST, DELETE]
+
+partieC_faculte_new:
+    path:     /faculte/new
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Faculte:new" }
+
+partieC_faculte_create:
+    path:     /faculte/create
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Faculte:create" }
+    methods:  POST
+
+partieC_lecteur_liste:
+    path:     /lecteur
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Lecteur:index" }
+
+partieC_lecteur_show:
+    path:     /lecteur/show/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Lecteur:show" }
+
+partieC_lecteur_delete:
+    path:     /lecteur/delete/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Lecteur:delete" }
+    methods:  [POST, DELETE]
+
+partieC_lecteur_new:
+    path:     /lecteur/new
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Lecteur:new" }
+
+partieC_lecteur_create:
+    path:     /lecteur/create
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Lecteur:create" }
+    methods:  POST
+
+partieC_lecteur_edit:
+    path:     /lecteur/edit/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Lecteur:edit" }
+
+partieC_lecteur_update:
+    path:     /lecteur/update/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Lecteur:update" }
+    methods:  [POST, PUT]
+
+partieC_lecteur_emprunt:
+    path:     /lecteur/emprunt/{idLecteur}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Lecteur:emprunt" }
+
+partieC_reservation_delete:
+    path:     /reservation/delete/{id}/{idLecteur}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Reservation:delete" }
+
+partieC_reservation_new:
+    path:     /reservation/new/{idLivre}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Reservation:new" }
+
+partieC_reservation_create:
+    path:     /reservation/create/{idLivre}
+    defaults: { _controller: "BibliothequeUniversitairePartieCBundle:Reservation:create" }
+    methods:  POST
+

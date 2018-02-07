@@ -1,0 +1,26 @@
+BibliothequeUniversitaire\EntiteBundle\Entity\Archive:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\EntiteBundle\Entity\ArchiveRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titreAuteur:
+            type: string
+            length: 255
+            column: titre_auteur
+        identiteLecteur:
+            type: string
+            length: '130'
+            column: identite_lecteur
+        dateDebut:
+            type: date
+            column: date_debut
+        dateRetour:
+            type: date
+            column: date_retour
+    lifecycleCallbacks: {  }

@@ -1,0 +1,30 @@
+auteur:
+    path:     /
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Auteur:index" }
+
+auteur_show:
+    path:     /{id}/show
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Auteur:show" }
+
+auteur_new:
+    path:     /new
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Auteur:new" }
+
+auteur_create:
+    path:     /create
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Auteur:create" }
+    methods:  POST
+
+auteur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Auteur:edit" }
+
+auteur_update:
+    path:     /{id}/update
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Auteur:update" }
+    methods:  [POST, PUT]
+
+auteur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Auteur:delete" }
+    methods:  [POST, DELETE]

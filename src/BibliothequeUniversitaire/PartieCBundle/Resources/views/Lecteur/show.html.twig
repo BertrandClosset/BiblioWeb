@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Lecteur</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Faculté</th>
+                <td>{{ entity.faculteChoisie }}</td>
+            </tr>
+            <tr>
+                <th>Cycle</th>
+                <td>{{ entity.cycleChoisi }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('partieC_lecteur_liste') }}">
+                Retour à la liste
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('partieC_lecteur_edit', { 'id': entity.id }) }}">
+                Modifier
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}

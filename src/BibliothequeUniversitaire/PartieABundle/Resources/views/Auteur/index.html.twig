@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Auteurs</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Prenom Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('partieA_auteur_show', { 'id': entity.id }) }}">{{ entity.prenom }} {{ entity.nom }}</a></td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('partieA_auteur_show', { 'id': entity.id }) }}">Détails</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('partieA_auteur_edit', { 'id': entity.id }) }}">Éditer</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('partieA_auteur_new') }}">
+                Ajout d'un nouvel Auteur
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,69 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Détails du Livre</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ entity.titre }}</td>
+            </tr>
+            <tr>
+                <th>Auteur(s)</th>
+                <td>
+                    {% for auteur in entity.getAuteursInscrits %}
+                        <li>{{ auteur.prenom }} {{ auteur.nom }}</li>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Notice</th>
+                <td>{{ entity.notice }}</td>
+            </tr>
+            <tr>
+                <th>Thème(s)</th>
+                <td>
+                    {% for theme in entity.getThemesAssocies %}
+                        <li>{{ theme.libelle }}</li>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Nombre d'exemplaires</th>
+                <td>{{ entity.nombreExemplaires }}</td>
+            </tr>
+            <tr>
+                {% if dispo == true %}
+                    <th style="color: limegreen"><b>Disponible</b></th>
+                {% else %}
+                    <th style="color: red"><b>Indisponible</b></th>
+                    {% if is_granted('ROLE_LECTEUR') %}
+                        <th><a href="{{ path('partieC_reservation_new', { 'idLivre': entity.id }) }}">Réserver</a></th>
+                    {% endif %}
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+    {% if is_granted('ROLE_CONSERVATEUR') %}
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('partieA_livre_liste') }}">
+            Retour à la liste
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('partieA_livre_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+        {% else %}
+
+    <a href="#" onclick="history.back(-1);">
+        Retour à la liste précédente
+    </a>
+{% endif %}
+{% endblock %}

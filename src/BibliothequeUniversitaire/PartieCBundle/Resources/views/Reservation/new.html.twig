@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    <h1>Création d'une nouvelle réservation</h1>
+
+    <ul>
+        <li>
+            Livre : {{ livre.titre }}
+        </li>
+        <li>
+            {{ form(form) }}
+        </li>
+    </ul>
+
+    <script>
+        $(function() {
+            $( "#bibliothequeuniversitaire_partieCbundle_reservation_dateReservation" ).datepicker({ minDate: "{{ dateRenduPlusTot }}" }).attr('readonly','readonly');;
+        });
+    </script>
+{% endblock %}

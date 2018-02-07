@@ -1,0 +1,30 @@
+cycle:
+    path:     /
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Cycle:index" }
+
+cycle_show:
+    path:     /{id}/show
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Cycle:show" }
+
+cycle_new:
+    path:     /new
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Cycle:new" }
+
+cycle_create:
+    path:     /create
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Cycle:create" }
+    methods:  POST
+
+cycle_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Cycle:edit" }
+
+cycle_update:
+    path:     /{id}/update
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Cycle:update" }
+    methods:  [POST, PUT]
+
+cycle_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Cycle:delete" }
+    methods:  [POST, DELETE]

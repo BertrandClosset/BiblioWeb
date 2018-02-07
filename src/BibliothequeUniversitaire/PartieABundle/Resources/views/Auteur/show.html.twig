@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Auteur</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Livre(s)</th>
+                <td>
+                    {% for livre in entity.getLivresEcrits %}
+                        <li><a href="{{ path('partieA_livre_show', { 'id': livre.id }) }}">{{ livre.titre }}</a></li>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('partieA_auteur_liste') }}">
+            Retour à la liste
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('partieA_auteur_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

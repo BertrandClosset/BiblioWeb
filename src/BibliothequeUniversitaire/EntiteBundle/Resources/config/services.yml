@@ -1,0 +1,4 @@
+services:
+#    bibliotheque_universitaire_entite.example:
+#        class: BibliothequeUniversitaire\EntiteBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

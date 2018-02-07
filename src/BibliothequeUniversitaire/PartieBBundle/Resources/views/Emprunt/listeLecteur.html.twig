@@ -1,0 +1,66 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Emprunts de : {{ lecteur.nom }} {{ lecteur.prenom }}</h1>
+    <h2>Nombre d'emprunt(s) possible : {{ nombreLivres }}</h2>
+
+    {% if emprunts is empty %}
+    <h2>Pas d'emprunt en cours</h2>
+    {% else %}
+        <h2>Emprunts en cours</h2>
+        <table class="records_list">
+            <thead>
+            <tr>
+                <th>Livre</th>
+                <th>Date d'emprunt</th>
+                <th>Échéance</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for emprunt in emprunts %}
+                    <tr>
+                        <td>{{ emprunt.getExemplaireEmprunte.getLivresDupliques.titre }}</td>
+                        <td>{{ emprunt.dateDebut|date('d-m-Y') }}</td>
+                        {% if "now"|date("Ymd") > emprunt.dateDebut|date_modify("+" ~ cycle.duree ~ " day")|date('Ymd')%}
+                            <td style="color: red">{{ emprunt.dateDebut|date_modify("+" ~ cycle.duree ~ " day")|date('d-m-Y') }}</td>
+                        {% elseif cycle.id == 3 %}
+                            <td>Pas d'échéance</td>
+                        {% else %}
+                            <td>{{ emprunt.dateDebut|date_modify("+" ~ cycle.duree ~ " day")|date('d-m-Y') }}</td>
+                        {% endif %}
+                        <th><a href="{{ path('partieB_archive_new', { 'idEmprunt' : emprunt.getId }) }}">Retour</a></th>
+                    </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% if reservations is empty %}
+        <h2>Pas de réservation en cours</h2>
+    {% else %}
+    <h2>Réservations en cours</h2>
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Livre</th>
+            <th>Date de réservation</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.getLivreReserve }}</td>
+                {% if "now"|date("Ymd") > reservation.dateReservation|date('Ymd') %}
+                    <td style="color: red">{{ reservation.dateReservation|date('d-m-Y') }}</td>
+                {% else %}
+                    <td>{{ reservation.dateReservation|date('d-m-Y') }}</td>
+                {% endif %}
+                <td><a href="{{ path('partieB_emprunt_reservation', { 'id': reservation.id }) }}">Emprunter</a></td>
+                <td><a href="{{ path('partieC_reservation_delete', { 'id': reservation.id, 'idLecteur': lecteur.id }) }}">Annuler</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

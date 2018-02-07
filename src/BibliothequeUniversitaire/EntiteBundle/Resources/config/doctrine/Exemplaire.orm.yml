@@ -1,0 +1,19 @@
+BibliothequeUniversitaire\EntiteBundle\Entity\Exemplaire:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\EntiteBundle\Entity\ExemplaireRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        cote:
+            type: string
+            length: '5'
+    manyToOne:
+        livres_dupliques:
+            targetEntity: Livre
+            inversedBy:   exemplaires_produits
+            cascade:      [ persist, remove ]

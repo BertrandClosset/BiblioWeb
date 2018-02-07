@@ -1,0 +1,22 @@
+BibliothequeUniversitaire\EntiteBundle\Entity\Faculte:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\EntiteBundle\Entity\FaculteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: '150'
+        ville:
+            type: string
+            length: '100'
+        codePostal:
+            type: string
+            length: '5'
+            column: code_postal
+    lifecycleCallbacks: {  }

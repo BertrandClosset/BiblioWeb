@@ -1,0 +1,19 @@
+BibliothequeUniversitaire\EntiteBundle\Entity\Reservation:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\EntiteBundle\Entity\ReservationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateReservation:
+            type: date
+            column: date_reservation
+    manyToOne:
+        lecteurs_reservant:
+            targetEntity: Lecteur
+        livre_reserve:
+            targetEntity: Livre

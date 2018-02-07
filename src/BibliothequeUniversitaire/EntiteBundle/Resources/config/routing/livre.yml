@@ -1,0 +1,30 @@
+livre:
+    path:     /
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Livre:index" }
+
+livre_show:
+    path:     /{id}/show
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Livre:show" }
+
+livre_new:
+    path:     /new
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Livre:new" }
+
+livre_create:
+    path:     /create
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Livre:create" }
+    methods:  POST
+
+livre_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Livre:edit" }
+
+livre_update:
+    path:     /{id}/update
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Livre:update" }
+    methods:  [POST, PUT]
+
+livre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Livre:delete" }
+    methods:  [POST, DELETE]

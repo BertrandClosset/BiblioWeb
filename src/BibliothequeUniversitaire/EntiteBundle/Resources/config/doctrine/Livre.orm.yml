@@ -1,0 +1,34 @@
+BibliothequeUniversitaire\EntiteBundle\Entity\Livre:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\EntiteBundle\Entity\LivreRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: text
+        notice:
+            type: text
+        nombreExemplaires:
+            type: integer
+            column: nombre_exemplaires
+    manyToMany:
+        auteurs_inscrits:
+            orderBy:      { 'prenom' : 'ASC', 'nom' : 'ASC' }
+            targetEntity: Auteur
+            inversedBy:   livres_ecrits
+            cascade:      [ persist ]
+        themes_associes:
+            orderBy:      { 'libelle' : 'ASC' }
+            targetEntity: Theme
+            inversedBy:   livres_associes
+            cascade:      [ persist ]
+    oneToMany:
+        exemplaires_produits:
+            targetEntity: Exemplaire
+            mappedBy:     livres_dupliques
+            cascade:      [ persist, remove ]

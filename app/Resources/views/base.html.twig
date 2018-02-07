@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Bibliotheque Universitaire{% endblock %}</title>
+        {% stylesheets 'bundles/framework/css/*' filter='cssrewrite' %}
+             <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="//jqueryui.com/resources/demos/datepicker/datepicker-fr.js"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    </head>
+    <body>
+        {% block menuLecteur %}
+            <div style="float: right;">
+                <a href="{{ path('bibliotheque_universitaire_homepage') }}">
+                    <img src="http://png-1.findicons.com/files/icons/1580/devine_icons_part_2/128/home.png" style="height: 35px;"/>
+                </a>
+
+                {% if is_granted('ROLE_CONSERVATEUR') %}
+                    <a href="{{ path('partieA_auteur_liste') }}">Gestion des Auteurs</a>
+                    <a href="{{ path('partieA_livre_liste') }}">Gestion des Livres</a>
+                    <a href="{{ path('partieA_theme_liste') }}">Gestion des Thèmes</a>
+                {% endif %}
+
+                {% if is_granted('ROLE_PRET') %}
+                    <a href="{{ path('partieB_emprunt_liste') }}">Emprunt Global</a>
+                    <a href="{{ path('partieB_emprunt_retard_liste') }}">Emprunt Retard</a>
+                {% endif %}
+
+                {% if is_granted('ROLE_INSCRIPTION') %}
+                    <a href="{{ path('partieC_lecteur_liste') }}">Gestion des Lecteurs</a>
+                    <a href="{{ path('partieC_faculte_liste') }}">Gestion des Facultés</a>
+                {% endif %}
+
+                <a href="{{ path('partieA_livre_search') }}">
+                    <img src="http://www.icone-png.com/png/2/1508.png" style="height: 30px; margin-top: 5px; margin-left: 15px;"/>
+                </a>
+            </div>
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

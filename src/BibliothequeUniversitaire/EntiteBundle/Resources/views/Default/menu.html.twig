@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body -%}
+        <p><i>
+            Bonjour :{{ app.user.username }}
+            Roles :  {{ roles }}
+        </i></p>
+
+        <h1>Gestion de la Bibliothèque</h1>
+        <p>Gestion des <a href="{{ path('partieA_auteur_liste') }}">Auteurs</a></p>
+        <p>Gestion des <a href="{{ path('partieA_livre_liste') }}">Livres</a></p>
+        <p>Gestion des <a href="{{ path('partieA_theme_liste') }}">Thèmes</a></p>
+        <p><a href="{{ path('logout') }}">Logout</a></p>
+{% endblock %}

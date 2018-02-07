@@ -1,0 +1,20 @@
+BibliothequeUniversitaire\EntiteBundle\Entity\Theme:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\EntiteBundle\Entity\ThemeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: '100'
+        description:
+            type: text
+    manyToMany:
+        livres_associes:
+            targetEntity: Livre
+            mappedBy:     themes_associes

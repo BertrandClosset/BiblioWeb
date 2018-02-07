@@ -1,0 +1,19 @@
+BibliothequeUniversitaire\SecurityBundle\Entity\Role:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\SecurityBundle\Entity\RoleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        role:
+            type: string
+            length: '60'
+    manyToMany:
+        users:
+            targetEntity: BibliothequeUniversitaire\SecurityBundle\Entity\User
+            mappedBy: roles
+    lifecycleCallbacks: {  }

@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Emprunts en retard</h1>
+
+    <table class="records_list" >
+        <thead>
+        <tr>
+            <th>Nom Prénom</th>
+            <th>Faculté</th>
+            <th>Livres empruntés</th>
+            <th>Date de début d'emprunt</th>
+            <th>Date de fin d'emprunt</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            {% if "now"|date("Ymd") > entity.dateDebut|date_modify("+" ~ entity.getLecteurEmprunteur.getCycleChoisi.duree ~ " day")|date('Ymd') %}
+                <tr>
+                    <td>{{ entity.getLecteurEmprunteur.nom }} {{ entity.getLecteurEmprunteur.prenom }}</td>
+                    <td>{{ entity.getLecteurEmprunteur.getFaculteChoisie.nom }}</td>
+                    <td style="white-space:pre-wrap ; word-wrap:break-word;">
+                        {{ entity.getExemplaireEmprunte.getLivresDupliques.titre }}
+                    </td>
+                    <td>{{ entity.dateDebut|date('d-m-Y') }}</td>
+                    <td>{{ entity.dateDebut|date_modify("+" ~ entity.getLecteurEmprunteur.getCycleChoisi.duree ~ " day")|date('d-m-Y') }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

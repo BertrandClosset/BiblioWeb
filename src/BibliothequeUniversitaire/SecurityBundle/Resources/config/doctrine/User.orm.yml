@@ -1,0 +1,25 @@
+BibliothequeUniversitaire\SecurityBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\SecurityBundle\Entity\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: '40'
+        password:
+            type: string
+            length: '20'
+    manyToMany:
+        roles:
+            targetEntity: BibliothequeUniversitaire\SecurityBundle\Entity\Role
+            inversedBy: users
+    oneToOne:
+        lecteur_associe:
+            targetEntity: BibliothequeUniversitaire\EntiteBundle\Entity\Lecteur
+    lifecycleCallbacks: {  }

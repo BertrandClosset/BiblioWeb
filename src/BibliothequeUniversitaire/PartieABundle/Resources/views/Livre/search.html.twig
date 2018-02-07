@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Votre Recherche :</h1>
+
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Auteur(s)</th>
+            <th>Thème(s)</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in listeLivres %}
+            <tr>
+                <td><a href="{{ path('partieA_livre_show', { 'id': entity.id }) }}">{{ entity.titre }}</a></td>
+                <td>
+                    {%  for auteur in entity.getAuteursInscrits %}
+                        <li>{{ auteur.prenom }} {{ auteur.nom }}</li>
+                    {% endfor %}
+                </td>
+                <td>
+                    {%  for theme in entity.getThemesAssocies %}
+                        <li>{{ theme.libelle }}</li>
+                    {% endfor %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('partieA_livre_show', { 'id': entity.id }) }}">Détails</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('partieA_livre_edit', { 'id': entity.id }) }}">Éditer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

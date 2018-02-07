@@ -1,0 +1,32 @@
+partieB_emprunt_liste:
+    path:     /emprunt
+    defaults: { _controller: "BibliothequeUniversitairePartieBBundle:Emprunt:index" }
+
+partieB_emprunt_livre_liste:
+    path:     /emprunt/livre/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieBBundle:Emprunt:listeLivres" }
+
+partieB_emprunt_lecteur_liste:
+    path:     /emprunt/lecteur/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieBBundle:Emprunt:listeLecteur" }
+
+partieB_emprunt_retard_liste:
+    path:     /emprunt/retard
+    defaults: { _controller: "BibliothequeUniversitairePartieBBundle:Emprunt:listeRetard" }
+
+partieB_emprunt_new:
+    path:     /emprunt/new/{idLivre}
+    defaults: { _controller: "BibliothequeUniversitairePartieBBundle:Emprunt:new" }
+
+partieB_emprunt_create:
+    path:     /emprunt/create/{idLivre}
+    defaults: { _controller: "BibliothequeUniversitairePartieBBundle:Emprunt:create" }
+    methods:  POST
+
+partieB_emprunt_reservation:
+    path:     /emprunt/reservation/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieBBundle:Emprunt:reservToemprunt" }
+
+partieB_archive_new:
+    path:     /archive/new/{idEmprunt}
+    defaults: { _controller: "BibliothequeUniversitairePartieBBundle:Archive:new" }

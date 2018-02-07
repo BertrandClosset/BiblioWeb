@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Emprunts du Livre : {{ livre.titre }}</h1>
+    {% if dispo == true %}
+        <h2 style="color: limegreen"><b>Disponible</b></h2>
+        <h2>Nombre d'exemplaire(s) disponible(s) : {{ nombreDispo }}</h2>
+        <a href="{{ path('partieB_emprunt_new', { 'idLivre' : livre.getId }) }}">Emprunter</a>
+    {% else %}
+        <h2 style="color: red"><b>Indisponible</b></h2>
+    {% endif %}
+
+    {% if entities is empty %}
+    <h2>Pas d'emprunt en cours</h2>
+    {% else %}
+    <table class="records_list" >
+        <thead>
+        <tr>
+            <th>Nom Prénom</th>
+            <th>Faculté</th>
+            <th>Date de début d'emprunt</th>
+            <th>Hors délai</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.getLecteurEmprunteur.nom }} {{ entity.getLecteurEmprunteur.prenom }}</td>
+                <td>{{ entity.getLecteurEmprunteur.getFaculteChoisie.nom }}</td>
+
+                <td>{{ entity.dateDebut|date('d-m-Y') }}</td>
+                {% if "now"|date("Ymd") > entity.dateDebut|date_modify("+" ~ entity.getLecteurEmprunteur.getCycleChoisi.duree ~ " day")|date('Ymd')%}
+                    <td style="color: red">KO</td>
+                {% else %}
+                    <td style="color: limegreen">OK</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

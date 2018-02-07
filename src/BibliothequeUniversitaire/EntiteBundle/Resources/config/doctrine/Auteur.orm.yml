@@ -1,0 +1,22 @@
+BibliothequeUniversitaire\EntiteBundle\Entity\Auteur:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\EntiteBundle\Entity\AuteurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: '60'
+        prenom:
+            type: string
+            length: '60'
+    manyToMany:
+        livres_ecrits:
+            targetEntity: Livre
+            mappedBy:     auteurs_inscrits
+            cascade:      [ persist ]

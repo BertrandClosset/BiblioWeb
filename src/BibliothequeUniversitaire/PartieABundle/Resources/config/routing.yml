@@ -1,0 +1,87 @@
+partieA_livre_liste:
+    path:     /livre
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Livre:index" }
+
+partieA_livre_new:
+    path:     /livre/new
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Livre:new" }
+
+partieA_livre_create:
+    path:     /livre/create
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Livre:create" }
+    methods:  POST
+
+partieA_livre_show:
+    path:     /livre/show/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Livre:show" }
+
+partieA_livre_delete:
+    path:     /livre/delete/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Livre:delete" }
+    methods:  [POST, DELETE]
+
+partieA_livre_edit:
+    path:     /livre/edit/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Livre:edit" }
+
+partieA_livre_update:
+    path:     /livre/update/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Livre:update" }
+    methods:  [POST, PUT]
+
+partieA_livre_search:
+    path:     /livre/search
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Livre:search" }
+
+partieA_auteur_liste:
+    path:     /auteur
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Auteur:index" }
+
+partieA_auteur_show:
+    path:     /auteur/show/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Auteur:show" }
+
+partieA_auteur_delete:
+    path:     /auteur/delete/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Auteur:delete" }
+    methods:  [POST, DELETE]
+
+partieA_auteur_new:
+    path:     /auteur/new
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Auteur:new" }
+
+partieA_auteur_create:
+    path:     /auteur/create
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Auteur:create" }
+    methods:  POST
+
+partieA_auteur_edit:
+    path:     /auteur/edit/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Auteur:edit" }
+
+partieA_auteur_update:
+    path:     /auteur/update/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Auteur:update" }
+    methods:  [POST, PUT]
+
+partieA_theme_liste:
+    path:     /theme
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Theme:index" }
+
+partieA_theme_show:
+    path:     /theme/show/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Theme:show" }
+
+partieA_theme_delete:
+    path:     /theme/delete/{id}
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Theme:delete" }
+    methods:  [POST, DELETE]
+
+partieA_theme_new:
+    path:     /theme/new
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Theme:new" }
+
+partieA_theme_create:
+    path:     /theme/create
+    defaults: { _controller: "BibliothequeUniversitairePartieABundle:Theme:create" }
+    methods:  POST

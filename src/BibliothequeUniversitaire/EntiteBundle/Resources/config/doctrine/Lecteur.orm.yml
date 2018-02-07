@@ -1,0 +1,24 @@
+BibliothequeUniversitaire\EntiteBundle\Entity\Lecteur:
+    type: entity
+    table: null
+    repositoryClass: BibliothequeUniversitaire\EntiteBundle\Entity\LecteurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: '60'
+        prenom:
+            type: string
+            length: '60'
+    manyToOne:
+        faculte_choisie:
+            targetEntity: Faculte
+            cascade:      [ persist ]
+        cycle_choisi:
+            targetEntity: Cycle
+            cascade:      [ persist ]

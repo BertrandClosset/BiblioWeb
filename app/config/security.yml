@@ -1,0 +1,44 @@
+security:
+    providers:
+        mes_utilisateurs:
+            entity:
+                class: BibliothequeUniversitaireSecurityBundle:User
+                property: username
+
+    encoders:
+        BibliothequeUniversitaire\SecurityBundle\Entity\User: plaintext
+
+    role_hierarchy:
+        ROLE_LECTEUR:      ROLE_USER
+        ROLE_CONSERVATEUR: ROLE_USER
+        ROLE_PRET:         ROLE_USER
+        ROLE_INSCRIPTION:  ROLE_USER
+        ROLE_ADMIN:        [ROLE_USER, ROLE_LECTEUR, ROLE_CONSERVATEUR, ROLE_PRET, ROLE_INSCRIPTION]
+        ROLE_SUPER_ADMIN:  [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_LECTEUR, ROLE_CONSERVATEUR, ROLE_PRET, ROLE_INSCRIPTION]
+
+    access_control:
+        - { path: ^/partieA/livre/search, roles: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/partieA/livre/show/[0-9]+$, roles: [ROLE_ADMIN, ROLE_USER]}
+        - { path: ^/partieA, roles: [ROLE_ADMIN, ROLE_CONSERVATEUR] }
+        - { path: ^/partieB, roles: [ROLE_ADMIN, ROLE_PRET] }
+        - { path: ^/partieC/lecteur/emprunt/[0-9]+$, roles: [ROLE_ADMIN, ROLE_LECTEUR] }
+        - { path: ^/partieC/reservation, roles: [ROLE_ADMIN, ROLE_LECTEUR] }
+        - { path: ^/partieC/, roles: [ROLE_ADMIN, ROLE_INSCRIPTION] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        gestionBibliotheque:
+            pattern:  ^/(menu|partieA|partieB|partieC|login_check|logout)
+            form_login:
+                login_path:    /login
+                check_path:    /login_check
+            logout:
+                path:    /logout
+                target:  /
+
+        homepage:
+            pattern:   ^/
+            anonymous: ~

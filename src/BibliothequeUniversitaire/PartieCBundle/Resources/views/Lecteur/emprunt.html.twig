@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Emprunts</h1>
+    <h2>Nombre d'emprunt(s) possible : {{ nombreLivres }}</h2>
+    <h2>Vos emprunts en cours</h2>
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Livre</th>
+            <th>Date d'emprunt</th>
+            <th>Échéance</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for emprunt in emprunts %}
+                <tr>
+                    <td>{{ emprunt.getExemplaireEmprunte.getLivresDupliques.titre }}</td>
+                    <td>{{ emprunt.dateDebut|date('d-m-Y') }}</td>
+                    {% if "now"|date("Ymd") > emprunt.dateDebut|date_modify("+" ~ cycle.duree ~ " day")|date('Ymd')%}
+                        <td style="color: red">{{ emprunt.dateDebut|date_modify("+" ~ cycle.duree ~ " day")|date('d-m-Y') }}</td>
+                    {% elseif cycle.id == 3 %}
+                        <td>Pas d'échéance</td>
+                    {% else %}
+                        <td>{{ emprunt.dateDebut|date_modify("+" ~ cycle.duree ~ " day")|date('d-m-Y') }}</td>
+                    {% endif %}
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Vos réservations en cours</h2>
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Livre</th>
+            <th>Date de réservation</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.getLivreReserve }}</td>
+                {% if "now"|date("Ymd") > reservation.dateReservation|date('Ymd') %}
+                    <td style="color: red">{{ reservation.dateReservation|date('d-m-Y') }}</td>
+                {% else %}
+                    <td>{{ reservation.dateReservation|date('d-m-Y') }}</td>
+                {% endif %}
+                <td><a href="{{ path('partieC_reservation_delete', { 'id': reservation.id, 'idLecteur': idLecteur }) }}">Annuler</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

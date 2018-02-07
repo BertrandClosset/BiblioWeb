@@ -1,0 +1,30 @@
+theme:
+    path:     /
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Theme:index" }
+
+theme_show:
+    path:     /{id}/show
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Theme:show" }
+
+theme_new:
+    path:     /new
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Theme:new" }
+
+theme_create:
+    path:     /create
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Theme:create" }
+    methods:  POST
+
+theme_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Theme:edit" }
+
+theme_update:
+    path:     /{id}/update
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Theme:update" }
+    methods:  [POST, PUT]
+
+theme_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Theme:delete" }
+    methods:  [POST, DELETE]

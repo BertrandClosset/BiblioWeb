@@ -1,0 +1,31 @@
+bibliotheque_universitaire_entite_lecteur:
+    resource: "@BibliothequeUniversitaireEntiteBundle/Resources/config/routing/lecteur.yml"
+    prefix:   /lecteur
+
+bibliotheque_universitaire_entite_cycle:
+    resource: "@BibliothequeUniversitaireEntiteBundle/Resources/config/routing/cycle.yml"
+    prefix:   /cycle
+
+bibliotheque_universitaire_entite_faculte:
+    resource: "@BibliothequeUniversitaireEntiteBundle/Resources/config/routing/faculte.yml"
+    prefix:   /faculte
+
+bibliotheque_universitaire_entite_livre:
+    resource: "@BibliothequeUniversitaireEntiteBundle/Resources/config/routing/livre.yml"
+    prefix:   /livre
+
+bibliotheque_universitaire_entite_theme:
+    resource: "@BibliothequeUniversitaireEntiteBundle/Resources/config/routing/theme.yml"
+    prefix:   /theme
+
+bibliotheque_universitaire_entite_auteur:
+    resource: "@BibliothequeUniversitaireEntiteBundle/Resources/config/routing/auteur.yml"
+    prefix:   /auteur
+
+bibliotheque_universitaire_homepage:
+    path:     /
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Default:index" }
+
+bibliotheque_universitaire_menu:
+    path:     /menu
+    defaults: { _controller: "BibliothequeUniversitaireEntiteBundle:Default:menu" }

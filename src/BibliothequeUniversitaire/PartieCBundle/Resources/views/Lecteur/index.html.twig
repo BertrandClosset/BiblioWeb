@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Lecteurs</h1>
+
+    <form method="post">
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+    
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Nom Prénom</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('partieC_lecteur_show', { 'id': entity.id }) }}">
+                        {{ entity.nom }} {{ entity.prenom }}
+                </a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('partieC_lecteur_show', { 'id': entity.id }) }}">Détails</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('partieC_lecteur_edit', { 'id': entity.id }) }}">Éditer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('partieC_lecteur_new') }}">
+                Ajout d'un nouveau lecteur
+            </a>
+        </li>
+    </ul>
+{% endblock %}

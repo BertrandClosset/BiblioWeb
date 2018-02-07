@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Recherche de Livres</h1>
+
+    <form method="post">
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+
+{% endblock %}
